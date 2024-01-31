@@ -94,8 +94,16 @@
           }
         }
 
-        function downloadPDF() {
-            window.open(responseData.pdfPath, '_blank');
+        async function downloadPDF() {
+          try {
+            const pdfResponse = await fetch(`ttps://obscure-oasis-44551-df50cf272e44.herokuapp.com/download-pdf?pdfPath=${encodeURIComponent(responseData.pdfPath)}`);
+            console.log(pdfResponse)
+            const blob = await pdfResponse.blob();
+            const url = URL.createObjectURL(blob);
+            window.open(url, '_blank');
+          } catch (error) {
+            console.error('Error downloading PDF:', error);
+          }
         }
       </script>
 </body>
