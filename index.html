@@ -61,12 +61,16 @@
 
         <div id="downloadButtonContainer" style="display: none;">
 
-            <button id="downloadButton" onclick="downloadPDF()">Download PDF</button>
+            <button id="downloadButton">Download PDF</button>
         </div>
       </form>
 
       <script>
         let responseData;
+          document.getElementById('downloadButton').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            downloadPDF();
+          });
 
         async function sendText() {
           const textareaValue = document.getElementById('emailText').value;
@@ -97,7 +101,6 @@
         async function downloadPDF() {
           try {
             const pdfResponse = await fetch(`https://obscure-oasis-44551-df50cf272e44.herokuapp.com/download-pdf?pdfPath=${encodeURIComponent(responseData.pdfPath)}`);
-            console.log(pdfResponse)
             const blob = await pdfResponse.blob();
             const url = URL.createObjectURL(blob);
             window.open(url, '_blank');
