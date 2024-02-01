@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl-PL">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,6 +14,7 @@
         align-items: center;
         justify-content: center;
         height: 100vh;
+        padding: 0 16px;
       }
 
       #myForm {
@@ -21,7 +22,7 @@
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        width: 400px;
+        max-width: 400px;
         text-align: center;
       }
 
@@ -30,9 +31,11 @@
         height: 150px;
         margin-bottom: 20px;
         padding: 10px;
+        font-size: 16px;
         border: 1px solid #ddd;
         border-radius: 4px;
         box-sizing: border-box;
+        font-family: "Arial", sans-serif;
       }
 
       button {
@@ -112,10 +115,24 @@
           transform: rotate(360deg);
         }
       }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container img {
+        max-width: 200px;
+        margin-bottom: 30px;
+      }
     </style>
   </head>
 
   <body>
+    <div class="container">
+    <img src="./robot-svgrepo-com.svg">
     <form id="myForm">
       <textarea id="emailText" placeholder="Wpisz zawartość tekstu"></textarea>
       <button type="button" onclick="sendText()">Znajdź</button>
@@ -133,7 +150,7 @@
         </button>
       </div>
     </form>
-
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>
